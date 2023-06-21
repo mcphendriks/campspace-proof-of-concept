@@ -35,17 +35,13 @@ const addCSS = () => {
   
   .campspace-widget article {
     border:none;
-    --campspace-height-card: 400px;
-    --campspace-width-card: 15em;
-    height: var(--campspace-height-card);
     width: clamp(15em, 50%, 34em);
     padding: 0;
     overflow: hidden;
-    border-radius: var(--border-radius-medium-campspace);
-  }
-  
-  .widget-images-slider {
- 
+}
+
+.widget-images-slider picture{
+      border-radius: var(--border-radius-medium-campspace);
     display: flex;
     width: 100%;
     height: 100%;
@@ -53,7 +49,7 @@ const addCSS = () => {
     list-style-type: none;
   }
   
-  .widget-images-slider img {
+  .widget-images-slider  img {
     width: 100%;  
   }
   
@@ -112,6 +108,8 @@ const addCSS = () => {
   document.head.appendChild(styleElement);
 };
 
+console.log("test");
+
 // Function to create and append the widget to the body
 const createWidget = (data) => {
   const section = document.createElement("section");
@@ -122,12 +120,23 @@ const createWidget = (data) => {
           Book Now
         </button>
         <article popover id="my-popover-widget">
-          <div class="widget-images-slider">
-            <img src="https://campspace.com/media/detail/uploads/space/hc/_1/ab/hc_1ab9feda225824f00656866e916cfd6d.jpeg"  width="" height="" alt="">
-            <img src="https://campspace.com/media/detail/uploads/space/hc/_1/ab/hc_1ab9feda225824f00656866e916cfd6d.jpeg"  width="" height="" alt="">
-            <img src="https://campspace.com/media/detail/uploads/space/hc/_1/ab/hc_1ab9feda225824f00656866e916cfd6d.jpeg"  width="" height="" alt="">
+        
+         <div class="widget-images-slider">
+          <picture>
+  <source srcset="https://campspace.com/media/detail/uploads/space/hc/_1/ab/hc_1ab9feda225824f00656866e916cfd6d.jpeg" type="image/webp">
+  <source srcset="https://campspace.com/media/detail/uploads/space/hc/_1/ab/hc_1ab9feda225824f00656866e916cfd6d.jpeg" type="image/jpeg">
+  <img src="https://campspace.com/media/detail/uploads/space/hc/_1/ab/hc_1ab9feda225824f00656866e916cfd6d.jpeg" alt="">
+
+  <source srcset="https://campspace.com/media/detail/uploads/space/hc/_1/ab/hc_1ab9feda225824f00656866e916cfd6d.jpeg" type="image/webp">
+  <source srcset="https://campspace.com/media/detail/uploads/space/hc/_1/ab/hc_1ab9feda225824f00656866e916cfd6d.jpeg" type="image/jpeg">
+  <img src="https://campspace.com/media/detail/uploads/space/hc/_1/ab/hc_1ab9feda225824f00656866e916cfd6d.jpeg" alt="">
+
+  <source srcset="https://campspace.com/media/detail/uploads/space/hc/_1/ab/hc_1ab9feda225824f00656866e916cfd6d.jpeg" type="image/webp">
+  <source srcset="https://campspace.com/media/detail/uploads/space/hc/_1/ab/hc_1ab9feda225824f00656866e916cfd6d.jpeg" type="image/jpeg">
+  <img src="https://campspace.com/media/detail/uploads/space/hc/_1/ab/hc_1ab9feda225824f00656866e916cfd6d.jpeg" alt="">
+  </picture>
+         </div>
           
-          </div>
           <div class="widget-content-overlay">
           <img src="${window.location.href}${data[0].campspace_logo}" alt="logo campspace">
           <p> From €${data[0].price}</p>
