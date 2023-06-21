@@ -21,6 +21,7 @@ const addCSS = () => {
   }
   
   .campspace-button {
+    font-weight: 600;
     position: fixed;
     right: 20px;
     top: 50%;
@@ -36,7 +37,7 @@ const addCSS = () => {
   }
 
   
-  .campspace-widget article {
+  .campspace-widget article  {
     border-radius: var(--border-radius-medium-campspace);
     border:none;
     width: clamp(15em, 50%, 27em);
@@ -53,8 +54,8 @@ const addCSS = () => {
     list-style-type: none;
   }
   
-  .widget-images-slider  img {
-    width: 100%;  
+  .widget-images-slider img {
+    width: 100%; 
   }
   
   .widget-content-overlay div {
@@ -74,7 +75,7 @@ const addCSS = () => {
     position: absolute;
     right: 10px;
     top: -7px;
-    font-weight: 500;
+    font-weight: 600;
     padding: 0.5rem;
     border-radius: var(--border-radius-medium-campspace);
     color: var(--color-light-grey-campspace);
@@ -84,7 +85,7 @@ const addCSS = () => {
   .widget-content-overlay a {
     position: absolute;
     bottom: 50px;
-    font-weight: 500;
+    font-weight: 600;
     color: var(--color-light-grey-campspace);
     background-color: var(--color-blue-campspace);
     border-radius: 8px;
@@ -120,7 +121,7 @@ const addCSS = () => {
 };
 
 // Function to create and append the widget to the body
-const createWidget = (data) => {
+const createWidget = (data, targetElement) => {
   const section = document.createElement("section");
   section.className = "campspace-widget";
 
@@ -138,13 +139,13 @@ const createWidget = (data) => {
   </button>
   <article popover id="my-popover-widget">
     <div class="widget-images-slider">
-        <img width="350" height="350" src="${firstImage.image}" alt="">
-      
 
-        <img width="350" height="350" src="${secondImage.image}" alt="">
-     
-      
-        <img width="350" height="350" src="${thirdImage.image}" alt="">
+    <img src="${firstImage.image}" loading="lazy" width="450" height="" alt="">
+ 
+    <img src="${secondImage.image}" loading="lazy" width="450" height="450" alt="">
+
+
+    <img src="${thirdImage.image}" loading="lazy" width="450" height="450" alt="">
     </div>
           <div class="widget-content-overlay">
           <img src="${data[0].campspace_logo}" alt="logo campspace">
@@ -159,7 +160,7 @@ const createWidget = (data) => {
     `;
 
   section.innerHTML = widgetContent;
-  document.body.appendChild(section);
+  document.body.insertBefore(section, targetElement);
 
   addCSS();
 };
@@ -172,6 +173,7 @@ fetch("https://campspace-dummy-data-test-a454ba90df28.herokuapp.com/hosts")
     }
   })
   .then((data) => {
-    console.log("succses", data);
-    createWidget(data);
+    console.log("success", data);
+    const targetElement = document.getElementById("targetElementId");
+    createWidget(data, targetElement);
   });
