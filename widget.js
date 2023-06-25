@@ -1,7 +1,7 @@
 const createWidget = async () => {
   try {
     const response = await fetch(
-      "https://campspace-dummy-data-test-a454ba90df28.herokuapp.com/hosts"
+      "https://camspace-dummy-data-40f1028f4f42.herokuapp.com/hosts"
     );
     const data = await response.json();
     const section = document.createElement("section");
@@ -144,5 +144,3 @@ const createWidget = async () => {
     console.error(error);
   }
 };
-
-createWidget();
